@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Elsie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Besley:wght@500;600&family=Elsie&display=swap');
+
+.bg-image{
+    background-image: url("mediamodifier-nCk22aqZjlM-unsplash.jpg");
+    background-size: cover;
+    filter: blur(2px);
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    position: absolute;
+}
+
+.content{
+    z-index: 2;
+    justify-content: center;
+    align-content: center;
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: rgb(15, 123, 73);
+
+}
+
+.h3{
+    font-size: 35px;
+    color: rgb(198, 233, 156);
+    text-shadow: 2px 2px gray;
+    font-family: 'Elsie', cursive;
+    width: fit-content;
+    display: inline-block;
+}
+
+.label{
+    width: 100px;
+    text-align: right;
+    font-family: 'Besley', serif;
+    color: rgb(126, 234, 219);
+}
+
+.input{
+    float: right;
+    width: fit-content;
+}
+
+.gender{
+    float: right;
+}
+
+.submit{
+    text-align: right;
+}
+
+.button{
+    background-color: rgb(207, 227, 213);
+    color: rgb(9, 78, 24);
+    font-weight: bold;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+}
+
+.photo{
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgb(18, 59, 19);
+    background-color: rgb(15, 123, 73);
+    float: right;
+    margin-top: 25px;
+}
+
+.button_for_upload{
+    margin: 3px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: inline-block;
+    background-color: rgb(207, 227, 213);
+    color: rgb(9, 78, 24);
+    font-weight: bold;
+    border: 3px solid black;
+    font-size: smaller;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.message{
+    text-align: center;
+    margin-top: 20px;
+}

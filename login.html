@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Login</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css')}}">
+</head>
+
+<body>
+   <div class="bg-image"></div>
+
+   <div class="content">
+      
+      <h3 class="h3">Login</h3>
+
+      <form action="/login" method="POST" class="form">
+         <p>
+            <label class="label">Registered Name</label>
+            {% if show %}
+            <span class="input">{{ name }}</span>
+            {% else %}
+            <input type="text" name="name" class="input" required>
+            <p class="submit">
+            <button type="button" class="button" onclick="window.location.href='/'">Back to Home</button>
+            </p>
+            {%endif%}
+         </p>
+         <p>
+            {% if show %}
+            <label class="label">Registered's ID</label>
+            <span class="input">{{ id }}</span>
+            {%endif%}
+         </p>
+      </form>
+
+
+      {% if show %}
+      <form action="/login/{{id}}" method="POST" , class="form",>
+         <p>
+            <label class="label">Purpose of Visit</label>
+            <input type="text" name="purpose" class="input">
+         </p>
+
+
+         <p>
+            <label class="label">Person of Interest</label>
+            <input type="text" name="person_of_interest" class="input">
+         </p>
+
+         <p>
+            <label class="label">Organization</label>
+            <input type="text" name="organization" class="input">
+         </p>
+
+         <p class="submit">
+            <button type="submit" class="button">Login</button>
+         </p>
+      </form>
+      {%endif%}
+
+   </div>
+
+</body>
+
+</html>

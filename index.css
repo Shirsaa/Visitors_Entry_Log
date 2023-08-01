@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Elsie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Besley:wght@500;600&family=Elsie&display=swap');
+
+body{
+    height: 100vh;
+    /* background-image: linear-gradient(to bottom right , rgb(15, 123, 73), rgb(174, 225, 64)); */
+    background-image: url("davide-cantelli-ajisKc2uuFk-unsplash.jpg");
+    background-size: cover;
+}
+
+.button{
+    background-color: rgb(204, 236, 213);
+    color: rgb(56, 62, 57);
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.button_login{
+    background-color: rgb(199, 236, 210);
+    color: rgb(56, 62, 57);
+    font-weight: bold;
+    font-size: 15px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.button_checkout{
+    background-color: rgba(227, 232, 223, 0.995);
+    color: rgb(54, 57, 54);
+    font-weight: bold;
+    font-size: 15px;
+    width: 100%;
+}
+
+.content{
+    margin-top: 75px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
+
+table{
+    width: 100%;
+    font-family: 'Besley', serif;
+    font-size: 15px;
+    color: rgb(58, 32, 32);
+}
+
+tr:nth-child(odd) {background-color: #72d186;}
+tr:nth-child(even) {background-color: #b4ecc3;}
+
+.h3{
+    font-size: 45px;
+    color: rgb(26, 129, 81);
+    text-shadow: 2px 2px rgb(6, 57, 38);
+    font-family: 'Elsie', cursive;
+    text-align: center;
+}

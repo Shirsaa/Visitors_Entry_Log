@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Profile Created</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_created.css')}}">
+   <script>
+      function ChangeView(){
+         var first = document.getElementById('first');
+         var second = document.getElementById('second');
+         first.style.display = 'none';
+         second.style.display = 'block';
+
+         var name = document.getElementById('name').value;
+         let formData = {
+            "name": name
+         };
+
+         fetch("http://127.0.0.1:5000/profile_created", {
+               "method": 'POST',
+               "headers": {'Content-type': 'application/json'},
+               "body": JSON.stringify(formData),
+               }).then(res=>{
+                     if(res.ok){
+                           return res.json()
+                     }else{
+                           alert("something is wrong")
+                     }
+                  }).then(jsonResponse=>{
+         
+                     console.log(jsonResponse)
+                     document.getElementById("name_2").innerHTML = jsonResponse[0][1]
+                     document.getElementById("gender").innerHTML = jsonResponse[0][2]
+                     document.getElementById("age").innerHTML = jsonResponse[0][3]
+                     document.getElementById("purpose").innerHTML = jsonResponse[0][4]
+                     document.getElementById("person").innerHTML = jsonResponse[0][5]
+                     document.getElementById("org").innerHTML = jsonResponse[0][6]
+                     document.getElementById("address").innerHTML = jsonResponse[0][7]
+                     document.getElementById("contact").innerHTML = jsonResponse[0][8]
+
+                     document.getElementById("output").src = jsonResponse[0][9]
+
+                  } 
+                  ).catch((err) => console.error(err));
+         }
+
+   </script>
+</head>
+
+<body>
+   <div class="bg-image"></div>
+   
+   <div class="content"> 
+
+      <form action="/profile_created" method="POST" class="form" enctype = "multipart/form-data" onsubmit="return false">
+         
+         <div id="first" style="display: block;">
+            <h3 class="h3">View Profile of....</h3>
+            <p>
+               <label class="label">Name</label>
+               <input type="text" id="name" name="view_profile_of" class="input" required>
+            </p>
+            <p class="submit">
+               <button type="submit" class="button" onclick="ChangeView()">Find</button>
+            </p>
+         </div>
+
+
+         <div id="second" style="display: none;">
+            <h3 class="h3">Profile form</h3>
+
+            <div class="photo">
+               <img id="output" class="output" width="80px" height="80px">
+            </div>
+
+
+            <p>
+               <label class="label">Name</label>
+               <label class="input" id="name_2">{{name}}</label>
+            </p>
+
+            <p>
+               <label class="label">Gender</label>
+               <label class="input" id="gender">{{gender}}</label>
+
+            </p>
+
+            <p>
+               <label class="label">Age</label>
+               <label class="input" id="age">{{age}}</label>
+            </p>
+
+            <p>
+               <label class="label">Purpose of Visit</label>
+               <label class="input" id="purpose">{{purpose}}</label>
+            </p>
+
+
+            <p>
+               <label class="label">Person of Interest</label>
+               <label class="input" id="person">{{person}}</label>
+            </p>
+
+            <p>
+               <label class="label">Organization representing</label>
+               <label class="input" id="org">{{org}}</label>
+            </p>
+
+            <p>
+               <label class="label">Address</label>
+               <label class="input" id="address">{{address}}</label>
+            </p>
+
+            <p>
+               <label class="label">Contact Number</label>
+               <label class="input" id="contact">{{contact}}</label>
+            </p>
+
+            <p class="submit">
+               <button type="button" class="button" onclick="window.location.href='/'">Back to Home</button>
+            </p>
+         </div>
+
+
+      </form>
+   </div>
+
+
+
+</body>
+
+</html>

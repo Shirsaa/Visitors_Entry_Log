@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome!!</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css')}}">
+
+    <script>
+        function Convert(id,checkin){
+            var cell_data = id;
+            var checkin_time = checkin;
+            let data = {
+                "id": cell_data,
+                "Checkin_time" : checkin_time,
+                }
+
+            fetch("http://127.0.0.1:5000", {
+                "method": 'POST',
+                "headers": {'Content-type': 'application/json'},
+                "body":JSON.stringify(data),}
+                ).then(res=>{
+                    if(res.ok){
+                        return res.json()
+                    }else{
+                        alert("something is wrong")
+                    }
+                }).then(jsonResponse=>{
+        
+                    console.log(jsonResponse)
+                } 
+                ).catch((err) => console.error(err));
+            
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="bgimage"></div>
+    <h3 class="h3">Home</h3>
+
+    <div class="content">
+
+        <button class="button" onclick="window.location.href='add_profile'">Add Profile</button>
+        <button class="button" onclick="window.location.href='profile_created'">View Profile</button>
+        <button class="button_login" onclick="window.location.href='login'">Login</button>
+
+        <form action="/" class="form" method="POST">
+            <table class="table">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Visitor ID</th>
+                    <th>Name</th>
+                    <th>Purpose</th>
+                    <th>Person_of_Interest</th>
+                    <th>Organization</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                </tr>
+                
+                {% for i in range(len1) %}
+                <tr>
+                    <td>{{i+1}}</td>
+                    {% for j in range(len2) %}
+                    <td>{{info[i][j]}}</td>
+                    {% endfor %}
+                    <td>
+                        {% if (info[i][0],) in checked_out %}
+                        <p style="display: inline;">
+                            {% for a in checkout_time %}
+                                {% if (info[i][5]) ==  a[1] %}
+                                    {{a[2]}}
+                                {%endif%}
+                            {%endfor%}
+                        </p>
+
+                        {% else %}
+                        <input type="submit" class="button_checkout" name="checkout"  value="Checkout" onclick="Convert('{{info[i][0]}}','{{info[i][5]}}')">
+                        {%endif%}
+
+                        {% if (info[i][0],) in checked_out and (info[i][0],) in checkedin_data %}
+                            {% for b in checkintime %}
+                                {% if b[0] == (info[i][5]) %}
+                                    <input type="submit" class="button_checkout" name="checkout"  value="Checkout" onclick="Convert('{{info[i][0]}}','{{info[i][5]}}')">
+                                {%endif%}
+                            {%endfor%}
+                        {% endif %}
+
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </form>
+    </div>
+
+</body>
+
+</html>

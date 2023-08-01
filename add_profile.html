@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Add Profile</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_profile.css')}}">
+   <script>
+      function LoadFile(){
+         var image = document.getElementById("file_upload").files[0];
+
+         var label = document.getElementById("label");
+         label.style.display = 'none'
+
+         var message = document.getElementById("message");
+         message.style.display = 'inline-block';
+         message.style.visibility = 'visible';
+      }
+      
+   </script>
+</head>
+
+<body>
+   <div class="bg-image"></div>
+   
+   <div class="content"> 
+
+      <form action="/add_profile" method="POST" class="form" enctype = "multipart/form-data">
+
+         <h3 class="h3">Profile form</h3>
+
+         <div class="photo">
+            <input type="file" name="file_upload" id="file_upload" onchange="LoadFile()" accept="image/png, image/jpeg, image/jpg" hidden/>
+            <label for="file_upload" class="button_for_upload" id="label">Upload profile pic</label>
+            <p id="message" class="message" hidden>Profile Pic Uploaded</p>
+         </div>
+
+
+         <p>
+            <label class="label">Name</label>
+            <input type="text" name="your_name" class="input" required>
+         </p>
+
+         <p>
+            <label class="label">Gender</label>
+            <span class="gender">
+               <input type="radio" name="gender" value="male" id="male">
+               <label for="male">Male</label>
+               <input type="radio" name="gender" value="female" id="female">
+               <label for="female">Female</label>
+            </span>
+         </p>
+
+         <p>
+            <label class="label">Age</label>
+            <input type="number" name="age" class="input" required>
+         </p>
+
+         <p>
+            <label class="label">Purpose of Visit</label>
+            <input type="text" name="purpose" class="input" required>
+         </p>
+
+
+         <p>
+            <label class="label">Person of Interest</label>
+            <input type="text" name="person_of_interest" class="input" required>
+         </p>
+
+         <p>
+            <label class="label">Organization representing</label>
+            <input type="text" name="organization" class="input" required>
+         </p>
+
+         <p>
+            <label class="label">Address</label>
+            <input type="text" name="address" class="input" required>
+         </p>
+
+         <p>
+            <label class="label">Contact Number</label>
+            <input type="number" name="contact_number" class="input" required>
+         </p>
+
+         <p class="submit">
+            <button type="button" class="button" onclick="window.location.href='/'">Back to Home</button>
+            <button type="submit" class="button">Create Profile</button>
+         </p>
+
+      </form>
+   </div>
+
+
+
+</body>
+
+</html>
